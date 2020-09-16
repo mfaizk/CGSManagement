@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "775150098180",
+    "firebase_url": "https://cgsmanagement-2efb1.firebaseio.com",
+    "project_id": "cgsmanagement-2efb1",
+    "storage_bucket": "cgsmanagement-2efb1.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:775150098180:android:67b5b8b2a211b7a296a251",
+        "android_client_info": {
+          "package_name": "com.cgs.CGSManagement"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "775150098180-1ahck3212evs0v0ktsekuc6k7pr84jr5.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.cgs.CGSManagement",
+            "certificate_hash": "31a1bec3f4c21305f1599758fc5c1fbd2066692e"
+          }
+        },
+        {
+          "client_id": "775150098180-1in6s6onng3t7882rq4afj5ifpro62pj.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB2QkfRkDz06-1usqVReN8wa5ABMmfIFEE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "775150098180-1in6s6onng3t7882rq4afj5ifpro62pj.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
