@@ -1,5 +1,6 @@
 import 'package:CGSManagement/Screens/addStudent.dart';
 import 'package:CGSManagement/Screens/infoScreen.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
@@ -107,6 +108,10 @@ class _HomeScreenState extends State<HomeScreen> {
     }
   }
 
+  Future<void> signOut() async {
+    await FirebaseAuth.instance.signOut();
+  }
+
   @override
   void initState() {
     super.initState();
@@ -132,12 +137,10 @@ class _HomeScreenState extends State<HomeScreen> {
     setState(() {
       isLoading = 'true';
     });
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-    String currentSession = prefs.getString('year');
+
     await FirebaseDatabase.instance
         .reference()
         .child('StudentInfo')
-        .child(currentSession)
         .child(selectedClass)
         .child(id)
         .once()
@@ -155,11 +158,18 @@ class _HomeScreenState extends State<HomeScreen> {
             toastLength: Toast.LENGTH_LONG);
       } else {
         Fluttertoast.showToast(
-            msg: 'Record Found',
-            gravity: ToastGravity.CENTER,
-            backgroundColor: Colors.green,
-            textColor: Colors.white,
-            toastLength: Toast.LENGTH_LONG);
+                msg: 'Record Found',
+                gravity: ToastGravity.CENTER,
+                backgroundColor: Colors.green,
+                textColor: Colors.white,
+                toastLength: Toast.LENGTH_LONG)
+            .whenComplete(() {
+          Navigator.push(context, MaterialPageRoute(
+            builder: (context) {
+              return InfoScreen(studentClass: selectedClass, studentId: id);
+            },
+          ));
+        });
         setState(() {
           isLoading = 'false';
         });
@@ -186,6 +196,12 @@ class _HomeScreenState extends State<HomeScreen> {
                 forceSessionChange();
               },
             ),
+            ListTile(
+              title: Text('SignOut'),
+              onTap: () {
+                signOut();
+              },
+            )
           ],
         ),
       ),

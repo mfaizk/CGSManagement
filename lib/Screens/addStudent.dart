@@ -65,7 +65,6 @@ class _AddStudentState extends State<AddStudent> {
       await FirebaseDatabase.instance
           .reference()
           .child('StudentInfo')
-          .child(currentSession)
           .child(studentClass)
           .child(studentUniqueId)
           .set({
