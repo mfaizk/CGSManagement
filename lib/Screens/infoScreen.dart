@@ -1,3 +1,4 @@
+import 'package:CGSManagement/Screens/editdetailScreen.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
@@ -166,7 +167,15 @@ class _InfoScreenState extends State<InfoScreen> {
                                         borderRadius:
                                             BorderRadius.circular(50)),
                                     color: Colors.green,
-                                    onPressed: () {},
+                                    onPressed: () {
+                                      Navigator.push(context, MaterialPageRoute(
+                                        builder: (context) {
+                                          return EditdetailScreen(
+                                              studentClass: widget.studentClass,
+                                              studentId: widget.studentId);
+                                        },
+                                      ));
+                                    },
                                     child: FittedBox(
                                       fit: BoxFit.contain,
                                       child: Text(

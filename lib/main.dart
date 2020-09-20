@@ -63,7 +63,7 @@ class _MyAppState extends State<MyApp> {
       title: 'CGSManagement',
       theme:
           ThemeData(primaryColor: Colors.blue, accentColor: Colors.blueAccent),
-      home: LandingPage(),
+      home: LandingScreen(),
     );
   }
 }

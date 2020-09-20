@@ -1,3 +1,4 @@
+import 'package:CGSManagement/Authentication/landingScreen.dart';
 import 'package:CGSManagement/Screens/addStudent.dart';
 import 'package:CGSManagement/Screens/infoScreen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -179,41 +180,41 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('Manager Area'),
-      ),
-      drawer: Drawer(
-        child: ListView(
-          children: [
-            DrawerHeader(
-              child: Text('CGS'),
+    return isLoading == 'true'
+        ? Container(
+            color: Colors.white,
+            child: Center(
+              child: CircularProgressIndicator(),
             ),
-            ListTile(
-              title: Text('Change Session'),
-              onTap: () {
-                Navigator.of(context, rootNavigator: true).pop();
-                forceSessionChange();
-              },
+          )
+        : Scaffold(
+            appBar: AppBar(
+              title: Text('Manager Area'),
             ),
-            ListTile(
-              title: Text('SignOut'),
-              onTap: () {
-                signOut();
-              },
-            )
-          ],
-        ),
-      ),
-      body: SingleChildScrollView(
-        child: isLoading == 'true'
-            ? Container(
-                color: Colors.white,
-                child: Center(
-                  child: CircularProgressIndicator(),
-                ),
-              )
-            : Form(
+            drawer: Drawer(
+              child: ListView(
+                children: [
+                  DrawerHeader(
+                    child: Text('CGS'),
+                  ),
+                  ListTile(
+                    title: Text('Change Session'),
+                    onTap: () {
+                      Navigator.of(context, rootNavigator: true).pop();
+                      forceSessionChange();
+                    },
+                  ),
+                  ListTile(
+                    title: Text('SignOut'),
+                    onTap: () {
+                      signOut();
+                    },
+                  )
+                ],
+              ),
+            ),
+            body: SingleChildScrollView(
+              child: Form(
                 key: _key,
                 child: Container(
                   height: MediaQuery.of(context).size.height * 1,
@@ -319,17 +320,17 @@ class _HomeScreenState extends State<HomeScreen> {
                   ),
                 ),
               ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          Navigator.push(context, MaterialPageRoute(
-            builder: (context) {
-              return AddStudent();
-            },
-          ));
-        },
-        child: Icon(Icons.add),
-      ),
-    );
+            ),
+            floatingActionButton: FloatingActionButton(
+              onPressed: () {
+                Navigator.push(context, MaterialPageRoute(
+                  builder: (context) {
+                    return AddStudent();
+                  },
+                ));
+              },
+              child: Icon(Icons.add),
+            ),
+          );
   }
 }
