@@ -1,3 +1,4 @@
+import 'package:CGSManagement/Screens/feeEntryScreen.dart';
 import 'package:CGSManagement/Screens/homeScreen.dart';
 import 'package:CGSManagement/Screens/infoScreen.dart';
 import 'package:firebase_core/firebase_core.dart';

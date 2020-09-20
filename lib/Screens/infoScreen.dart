@@ -1,4 +1,5 @@
 import 'package:CGSManagement/Screens/editdetailScreen.dart';
+import 'package:CGSManagement/Screens/feeEntryScreen.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
@@ -90,6 +91,15 @@ class _InfoScreenState extends State<InfoScreen> {
     ).show();
   }
 
+  gototFeeEntryScreen() async {
+    Navigator.pushReplacement(context, MaterialPageRoute(
+      builder: (context) {
+        return FeeEntryScreen(
+            studentClass: widget.studentClass, studentId: widget.studentId);
+      },
+    ));
+  }
+
   @override
   Widget build(BuildContext context) {
     return isLoading == 'true'
@@ -168,7 +178,8 @@ class _InfoScreenState extends State<InfoScreen> {
                                             BorderRadius.circular(50)),
                                     color: Colors.green,
                                     onPressed: () {
-                                      Navigator.push(context, MaterialPageRoute(
+                                      Navigator.pushReplacement(context,
+                                          MaterialPageRoute(
                                         builder: (context) {
                                           return EditdetailScreen(
                                               studentClass: widget.studentClass,
@@ -195,7 +206,9 @@ class _InfoScreenState extends State<InfoScreen> {
                                         borderRadius:
                                             BorderRadius.circular(50)),
                                     color: Colors.blue,
-                                    onPressed: () {},
+                                    onPressed: () {
+                                      gototFeeEntryScreen();
+                                    },
                                     child: FittedBox(
                                       fit: BoxFit.contain,
                                       child: Text(
